@@ -1,0 +1,43 @@
+<%- include header %>
+<form method="post">
+    报名类型:
+    <label class="radio-inline">
+        <input type="radio" name="applyType" id="applyType1" value="个人赛"> 个人赛
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="applyType" id="applyType2" value="团体赛"> 团体赛
+    </label>
+    <br/>
+    <select class="form-control" name="raceIndividuals">
+        <option selected value="">请选择</option>
+        <option name="raceIndividuals">男子100米</option>
+        <option name="raceIndividuals">男子200米</option>
+        <option name="raceIndividuals">男子400米</option>
+        <option name="raceIndividuals">男子1000米</option>
+        <option name="raceIndividuals">男子3000米</option>
+        <option name="raceIndividuals">男子铅球</option>
+        <option name="raceIndividuals">男子跳高</option>
+        <option name="raceIndividuals">男子跳高</option>
+        <option name="raceIndividuals">男子三级跳</option>
+        <option name="raceIndividuals">女子100米</option>
+        <option name="raceIndividuals">女子400米</option>
+        <option name="raceIndividuals">女子800米</option>
+        <option name="raceIndividuals">女子3000米</option>
+        <option name="raceIndividuals">女子铅球</option>
+        <option name="raceIndividuals">女子跳高</option>
+        <option name="raceIndividuals">女子跳高</option>
+        <option name="raceIndividuals">女子三级跳</option>
+    </select>
+    <select class="form-control" name="raceTeam">
+        <option selected value="">请选择</option>
+        <option name="raceTeam">男子4×100米</option>
+        <option name="raceTeam">男子4×400米</option>
+        <option name="raceTeam">女子4×100米</option>
+        <option name="raceTeam">女子4×400米</option>
+    </select>
+    <input type="submit" value="报名" />
+</form>
+<script>
+    var sex = '<%= sex %>';
+</script>
+<%- include footer %>
