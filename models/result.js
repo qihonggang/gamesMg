@@ -1,4 +1,5 @@
 
+
 var mongodb = require('./db');
 
 //获取项目表单提交的信息
@@ -27,6 +28,7 @@ Project.prototype.save = function(callback){
         projectId: this.projectId,
         projectName: this.projectName,
         projectRule: this.projectRule,
+        time: time,
         projectSort: this.projectSort,
         scoreBest: this.scoreBest
     }
@@ -84,65 +86,4 @@ Project.get = function (projectId,callback) {
     });
 };
 
-//更新一篇文章及其相关信息
-Project.update = function(projectId,projectName, projectRule, projectSort,scoreBest,callback) {
-    //打开数据库
-    mongodb.open(function (err, db) {
-        if (err) {
-            return callback(err);
-        }
-        //读取 posts 集合
-        db.collection('Project', function (err, collection) {
-            if (err) {
-                mongodb.close();
-                return callback(err);
-            }
-            //更新文章内容
-            collection.update({
-                "projectId": projectId,
-            }, {
-                $set: {
-                    "projectId": projectId,
-                    "projectName": projectName,
-                    "projectRule": projectRule,
-                    "projectSort": projectSort,
-                    "scoreBest": scoreBest
-                }
-            }, function (err) {
-                mongodb.close();
-                if (err) {
-                    return callback(err);
-                }
-                callback(null);
-            });
-        });
-    });
-};
-
-//删除一篇文章
-Project.remove = function(projectId, callback) {
-    //打开数据库
-    mongodb.open(function (err, db) {
-        if (err) {
-            return callback(err);
-        }
-        //读取 posts 集合
-        db.collection('Project', function (err, collection) {
-            if (err) {
-                mongodb.close();
-                return callback(err);
-            }
-            //根据用户名、日期和标题查找并删除一篇文章
-            collection.remove({
-                "projectId": projectId
-            }, function (err) {
-                mongodb.close();
-                if (err) {
-                    return callback(err);
-                }
-                callback(null);
-            });
-        });
-    });
-};
 module.exports = Project;

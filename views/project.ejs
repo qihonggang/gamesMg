@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>运动会管理系统</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+
+<div class="container">
+    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info" >
+            <div class="panel-heading">
+                <div class="panel-title">Sign In</div>
+            </div>
+
+            <div style="padding-top:30px" class="panel-body" >
+
+                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+                <form id="signupform" class="form-horizontal" role="form" method="post">
+
+                    <div class="form-group">
+                        <label for="projectId" class="col-md-3 control-label">项目号</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="projectId" placeholder="请输入项目号">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectName" class="col-md-3 control-label">项目名</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="projectName" placeholder="请输入项目名">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="scoreBest" class="col-md-3 control-label">校记录</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="scoreBest" placeholder="请输入校记录">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="text" class="col-md-3 control-label">项目规则</label>
+                        <div class="col-md-9">
+                            <textarea class="form-control" name="projectRule" style="overflow: auto;resize: none;" placeholder="请输入项目规则" rows="4"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sex" class="col-md-3 control-label">类型</label>
+                        <div class="col-md-9">
+                            <label class="radio-inline">
+                                <input type="radio" name="projectSort" id="projectSort1" value="田赛"> 田赛
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="projectSort" id="projectSort2" value="径赛"> 径赛
+                            </label>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:10px" class="form-group">
+                        <div class="col-sm-12 text-center controls">
+                            <input type="submit"  class="btn btn-primary btn-lg btn-block" value="录入项目"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12 control">
+                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                <% if (success) { %>
+                                <div><%= success %></div>
+                                <% } %>
+                                <% if (error) { %>
+                                <div style="color: red;"><%= error %> </div>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include footer %>

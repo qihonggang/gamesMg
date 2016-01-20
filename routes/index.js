@@ -1,24 +1,57 @@
 var crypto = require('crypto'),
     User = require('../models/user.js'),
     Post = require("../models/post.js");
+    Project = require("../models/project.js")
 var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  Post.get(null, function (err, posts) {
+  Project.get(null, function (err, projects) {
     if (err) {
-      posts = [];
+      projects = [];
     }
     res.render('index', {
       title: '主页',
       user: req.session.user,
-      posts: posts,
+      projects: projects,
       success: req.flash('success').toString(),
       error: req.flash('error').toString()
     });
   });
 });
+
+router.post('/',function(req,res){
+    //删除模块
+  console.log(req.body.projectId);
+  Project.remove(req.body.projectId,function(err){
+    if(err){
+      req.flash('error',err);
+      return res.redirect('/')
+    }
+    req.flash('success',req.session.user.name);
+    res.redirect('/');
+  })
+
+
+
+})
+
+router.post('/update',function(req,res){
+    Project.update(req.body.projectId,req.body.projectName, req.body.projectRule, req.body.projectSort, req.body.rscoreBest, function (err) {
+        console.log(req.body.projectId)
+        console.log(req.body.projectName)
+        console.log(req.body.projectRule)
+        console.log(req.body.projectSort)
+
+        if (err) {
+            req.flash('error', err);
+            return res.redirect('/');//出错!返回文章页
+        }
+        req.flash('success', '修改成功!');
+        res.redirect('/');//成功!返回文章页
+    });
+})
 
 router.get('/reg',checkNotLogin);
 router.get('/reg',function(req,res){
@@ -129,6 +162,36 @@ router.post('/post', function (req, res) {
     res.redirect('/'); //发表成功跳转到主页
   });
 });
+
+router.get('/project',checkLogin);
+router.get('/project', function (req, res) {
+  Post.get(null, function (err, projects) {
+    if (err) {
+      projects = [];
+    }
+    res.render('project', {
+      title: '登录',
+      projects: projects,
+      user: req.session.user,
+      success: req.flash('success').toString(),
+      error: req.flash('error').toString()
+    });
+  });
+});
+
+router.post('/project',checkLogin);
+router.post('/project', function (req, res) {
+  project = new Project(req.body.projectId,req.body.projectName,req.body.projectRule,req.body.projectSort,req.body.scoreBest);
+  project.save(function(err){
+    if(err){
+      req.flash('error',err);
+      return res.redirect('/');
+    }
+    req.flash('success','发布成功!');
+    res.redirect('/'); //发表成功跳转到主页
+  });
+});
+
 
 router.get('/logout',checkLogin);
 router.get('/logout', function (req, res) {
