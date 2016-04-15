@@ -1,0 +1,342 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>田径运动会管理系统</title>
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<link href="css/blue.css" rel="stylesheet" type="text/css" media="all" />
+	<!----font-Awesome----->
+	<link rel="stylesheet" href="fonts/css/font-awesome.min.css">
+	<!----font-Awesome----->
+	<!-- start plugins -->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script src="js/menu.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/fliplightbox.min.js"></script>
+	<script type="text/javascript">
+		$('body').flipLightBox()
+	</script>
+	<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+	<script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			var filterList = {
+
+				init : function() {
+
+					// MixItUp plugin
+					// http://mixitup.io
+					$('#portfoliolist').mixitup({
+						targetSelector : '.portfolio',
+						filterSelector : '.filter',
+						effects : ['fade'],
+						easing : 'snap',
+						// call the hover effect
+						onMixEnd : filterList.hoverEffect()
+					});
+
+				},
+
+				hoverEffect : function() {
+
+					// Simple parallax effect
+					$('#portfoliolist .portfolio').hover(function() {
+						$(this).find('.label').stop().animate({
+							bottom : 0
+						}, 200, 'easeOutQuad');
+						$(this).find('img').stop().animate({
+							top : -30
+						}, 500, 'easeOutQuad');
+					}, function() {
+						$(this).find('.label').stop().animate({
+							bottom : -40
+						}, 200, 'easeInQuad');
+						$(this).find('img').stop().animate({
+							top : 0
+						}, 300, 'easeOutQuad');
+					});
+
+				}
+			};
+
+			// Run the show!
+			filterList.init();
+
+		});
+	</script>
+	<!-- start light_box -->
+	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css" media="screen" />
+	<!--
+    <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+    -->
+	<script type="text/javascript" src="js/jquery.fancybox-1.2.1.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("div.fancyDemo a").fancybox();
+		});
+	</script>
+	<link rel="stylesheet" href="css/app.css" >
+
+</head>
+
+<body>
+<div class="header_bg head">
+	<div class="container">
+		<div class="header">
+			<div class="h_menu">
+				<a id="touch-menu" class="mobile-menu" href="#">Menu</a>
+				<nav>
+					<ul class="menu list-unstyled">
+						<li><a href="index.html">首页</a></li>
+						<li class="activate"><a href="team1.html">项目介绍</a>
+							<!--ul class="sub-menu list-unstyled">
+								<li class="activate"><a href="team1.html">田赛</a></li>
+								<li><a href="team22.html">径赛</a></li>
+							</ul-->
+						</li>
+						<li><a href="feature.html">通知公告</a></li>
+						<li><a href="baoming.html">报名</a></li>
+						<li><a href="about.html">登陆</a></li>
+						<li><a href="service.html">注册</a></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+
+<div class="main_btm2"><!-- start main_btm2 -->
+	<div class="container">
+
+		<div class="pricing2"><!-- start pricing2 -->
+			<h5>田赛项目</h5>
+			<ul class="pricing_table list-unstyled">
+				<li class="price_block">
+					<h3>100米</h3>
+					<div class="price">
+						<div class="price_figure">
+							<span class="price_number"><h4>记录：</h4></span>
+							<span class="price_tenure">男子：11"24s</span>
+							<span class="price_tenure">&nbsp;&nbsp;&nbsp;&nbsp;女子：12"55s</span>
+						</div>
+					</div>
+					<div class="features list-unstyled">
+						<p class="size">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;运动员赛道预赛时由系统<br><br>给出，决赛一般由预赛成绩决<br><br>定。比赛时运动员到各自赛道<br><br>就位，起跑后不能串道否则成<br><br>绩无效。起跑时，只允许一次<br><br>抢跑(未发令起跑或发令后0.02<br><br>秒以内起跑）第一次抢跑须重<br><br>新发令，以后抢跑的运动员取<br><br>消比赛资格重新发令。
+						</p>
+					</div>
+				</li>
+				<li class="price_block">
+					<h3>200米</h3>
+					<div class="price">
+						<div class="price_figure">
+							<span class="price_number"><h4>记录：</h4></span>
+							<span class="price_tenure">男子：25"04s</span>
+							<span class="price_tenure">&nbsp;&nbsp;&nbsp;&nbsp;女子：34"55s</span>
+						</div>
+					</div>
+					<div class="features list-unstyled">
+						<p class="size">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;运动员赛道预赛时由系统<br><br>给出，决赛一般由预赛成绩决<br><br>定。比赛时运动员到各自赛道<br><br>就位，起跑后不能串道否则成<br><br>绩无效。起跑时，只允许一次<br><br>抢跑(未发令起跑或发令后0.02<br><br>秒以内起跑）第一次抢跑须重<br><br>新发令，以后抢跑的运动员取<br><br>消比赛资格重新发令。
+						</p>
+					</div>
+				</li>
+				<li class="price_block">
+					<h3>400米</h3>
+					<div class="price">
+						<div class="price_figure">
+							<span class="price_number"><h4>记录：</h4></span>
+							<span class="price_tenure">男子：50"24s</span>
+							<span class="price_tenure">&nbsp;&nbsp;&nbsp;&nbsp;女子：55"55s</span>
+						</div>
+					</div>
+					<div class="features list-unstyled">
+						<p class="size">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;起跑的时候是在自己的跑<br><br>道里，直到运动员通过标记可<br><br>以窜道的分离线才能离开自己<br><br>的跑道。在规定不能窜跑道的<br><br>地方窜道要取消比赛资格。
+						</p>
+						<br><br><br><br><br><br><br>
+					</div>
+				</li>
+				<li class="price_block">
+					<h3>800米</h3>
+					<div class="price">
+						<div class="price_figure">
+							<span class="price_number"><h4>记录：</h4></span>
+							<span class="price_tenure">男子：150"24s</span>
+							<span class="price_tenure">&nbsp;&nbsp;&nbsp;&nbsp;女子：170"55s</span>
+						</div>
+					</div>
+					<div class="features list-unstyled">
+						<p class="size">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;起跑的时候是在自己的跑<br><br>道里，直到运动员通过标记可<br><br>以窜道的分离线才能离开自己<br><br>的跑道。在规定不能窜跑道的<br><br>地方窜道要取消比赛资格。
+						</p>
+						<br><br><br><br><br><br><br>
+					</div>
+				</li>
+				<div class="clearfix"></div>
+			</ul>
+
+
+		</div><!-- end pricing2 -->
+
+
+		<div class="pricing2"><!-- start pricing2 -->
+			<ul class="pricing_table list-unstyled">
+				<li class="price_block">
+					<h3>3000米</h3>
+					<div class="price">
+						<div class="price_figure">
+							<span class="price_number"><h4>记录：</h4></span>
+							<span class="price_tenure">男子：11"24min</span>
+						</div>
+					</div>
+					<div class="features list-unstyled">
+						<p class="size">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该项目为女子长跑项目<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;起跑的时候是在自己的跑<br><br>道里，直到运动员通过标记可<br><br>以窜道的分离线才能离开自己<br><br>的跑道。在规定不能窜跑道的<br><br>地方窜道要取消比赛资格。
+						</p>
+						<br><br><br><br><br><br>
+					</div>
+				</li>
+				<li class="price_block">
+					<h3>5000米</h3>
+					<div class="price">
+						<div class="price_figure">
+							<span class="price_number"><h4>记录：</h4></span>
+							<span class="price_tenure">男子：15"24min</span>
+						</div>
+					</div>
+					<div class="features list-unstyled">
+						<p class="size">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该项目为男子长跑项目<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;起跑的时候是在自己的跑<br><br>道里，直到运动员通过标记可<br><br>以窜道的分离线才能离开自己<br><br>的跑道。在规定不能窜跑道的<br><br>地方窜道要取消比赛资格。
+						</p>
+						<br><br><br><br><br><br>
+					</div>
+				</li>
+				<li class="price_block">
+					<h3>4*100米</h3>
+					<div class="price">
+						<div class="price_figure">
+							<span class="price_number"><h4>记录：</h4></span>
+							<span class="price_tenure">男子：45"24s</span>
+							<span class="price_tenure">&nbsp;&nbsp;&nbsp;&nbsp;女子：50"55s</span>
+						</div>
+					</div>
+					<div class="features list-unstyled">
+						<p class="size">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4*100米接力赛中自始至终<br><br>都必须在自己的跑到内进行比<br><br>赛，4*400米接力赛起跑的时<br><br>候是在自己的跑道里，直到运<br><br>动员通过标记可以窜道的分离<br><br>线才能离开自己的跑道。在规<br><br>定不能窜跑道的地方窜道要取<br><br>消比赛资格。
+						</p>
+						<br><br>
+					</div>
+				</li>
+				<li class="price_block">
+					<h3>20*50米</h3>
+					<div class="price">
+						<div class="price_figure">
+							<span class="price_number"><h4>记录：</h4></span>
+							<span class="price_tenure">男子：11"24min</span>
+							<span class="price_tenure">&nbsp;&nbsp;&nbsp;&nbsp;女子：12"55min</span>
+						</div>
+					</div>
+					<div class="features list-unstyled">
+						<p class="size">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20*50米接力赛中自始至终<br><br>都必须在自己的跑到内进行比<br><br>赛，20*50米接力赛起跑的时<br><br>候是在自己的跑道里，直到运<br><br>动员通过标记可以窜道的分离<br><br>线才能离开自己的跑道。在规<br><br>定不能窜跑道的地方窜道要取<br><br>消比赛资格。
+						</p>
+						<br><br>
+					</div>
+				</li>
+				<div class="clearfix"></div>
+			</ul>
+
+			<div class="clear"></div>
+		</div><!-- end pricing2 -->
+
+		<div class="pricing2"><!-- start pricing2 -->
+			<h5>田赛项目</h5>
+			<ul class="pricing_table list-unstyled">
+				<li class="price_block">
+					<h3>跳高</h3>
+					<div class="price">
+						<div class="price_figure">
+							<span class="price_number"><h4>记录：</h4></span>
+							<span class="price_tenure">男子：180cm</span>
+							<span class="price_tenure">&nbsp;&nbsp;&nbsp;&nbsp;女子：155cm</span>
+						</div>
+					</div>
+					<div class="features list-unstyled">
+						<p class="size">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;跳高要求运动员单足起<br><br>跳，要跳过横杆且不能将其碰<br><br>下支撑杆。每次比赛由主裁判<br><br>设定起始高度，跳高横杆每轮<br><br>至少升高2厘米，直到剩下最<br><br>后一个人。跳高运动员可以自<br><br>己选择何时起跳或过杆。他们<br><br>如果三次试跳同一高度失败就<br><br>会被淘汰。他们成功越过的最<br><br>高高度就是他们的最终成绩。
+						</p>
+						<br><br>
+					</div>
+				</li>
+				<li class="price_block">
+					<h3>跳远</h3>
+					<div class="price">
+						<div class="price_figure">
+							<span class="price_number"><h4>记录：</h4></span>
+							<span class="price_tenure">男子：10米</span>
+							<span class="price_tenure">&nbsp;&nbsp;&nbsp;&nbsp;女子：8米</span>
+						</div>
+					</div>
+					<div class="features list-unstyled">
+						<p class="size">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以起跳线（踩到起跳线<br><br>以内无效）到运动员身体任意<br><br>部位与沙坑接触点的最近距离<br><br>为比赛成绩。预赛取每个运动<br><br>员三次试跳的最好成绩为预赛<br><br>成绩，排名前八位进入决赛进<br><br>入决赛的运动员可以再跳三次<br><br>取运动员预赛和决赛中六次试<br><br>跳的最好成绩排定最终名次（<br><br>两名运动员成绩相同时以成绩<br><br>出现的时间先后排名）。
+						</p>
+
+					</div>
+				</li>
+				<li class="price_block">
+					<h3>铅球</h3>
+					<div class="price">
+						<div class="price_figure">
+							<span class="price_number"><h4>记录：</h4></span>
+							<span class="price_tenure">男子：1544cm</span>
+							<span class="price_tenure">&nbsp;&nbsp;&nbsp;&nbsp;女子：1200cm</span>
+						</div>
+					</div>
+					<div class="features list-unstyled">
+						<p class="size">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以投掷点（踩到起跳线<br><br>以内无效）到铅球的落地点为<br><br>比赛成绩。（注意：运动员投<br><br>掷完毕后如果从投掷场地圆圈<br><br>的前半弧出场本次成绩无效 。
+
+						</p>
+						<br><br><br><br><br><br><br><br><br><br><br><br>
+					</div>
+				</li>
+				<li class="price_block">
+					<h3>三级跳</h3>
+					<div class="price">
+						<div class="price_figure">
+							<span class="price_number"><h4>记录：</h4></span>
+							<span class="price_tenure">男子：2400cm</span>
+							<span class="price_tenure">&nbsp;&nbsp;&nbsp;&nbsp;女子：1744cm</span>
+						</div>
+					</div>
+					<div class="features list-unstyled">
+						<p class="size">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在三级跳中运动员从起<br><br>跳线起要三步入坑，就像它的<br><br>名字一样。这意味着他们必须<br><br>首先踏下最终将起跳的脚，而<br><br>后大跨步换脚，最后跃入坑内。<br><br>在两项运动中，只有运动员最<br><br>好的那次成绩被记录下来。
+						</p>
+						<br><br><br><br><br><br><br><br>
+					</div>
+				</li>
+				<div class="clearfix"></div>
+			</ul>
+
+			<div class="clear"></div>
+		</div><!-- end pricing2 -->
+
+	</div>
+</div>
+
+<div class="footer1_bg tail"><!-- start footer1 -->
+	<div class="container">
+		<div class="footer1">
+			<div class="copy pull-left">
+				<p class="link"><h4 class="h">@太原理工大学软件1324班课程设计</h4></p>
+			</div>
+			<div class="soc_icons pull-right">
+				<ul class="list-unstyled text-center">
+					<li><a href="#"><i class="fa fa-twitter">返回顶部</i></a></li>
+				</ul>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>

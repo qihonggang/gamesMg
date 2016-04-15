@@ -2,17 +2,19 @@
 
 var mongodb = require('./db');
 
-//获取项目表单提交的信息
-function Project(projectId,projectName,projectRule,projectSort,scoreBest){
-    this.projectId = projectId;
+//获取成绩表单提交的信息
+function Result(studentID,name,projectName,gameClass,group,fendao,projectResult){
+    this.studentID = studentID;
+    this.name = name;
     this.projectName = projectName;
-    this.projectRule = projectRule;
-    this.projectSort = projectSort;
-    this.scoreBest = scoreBest;
+    this.gameClass = gameClass;  //预决赛
+    this.group = group; //分组分道
+    this.fendao = fendao;
+    this.projectResult = projectResult;
 }
 
-//存储项目表及其相关信息
-Project.prototype.save = function(callback){
+//存储成绩表及其相关信息
+Result.prototype.save = function(callback){
     var date = new Date();
     //存储各种时间格式，方便以后拓展
     var time = {
@@ -24,13 +26,14 @@ Project.prototype.save = function(callback){
     }
 
     //要存入数据库的文档
-    var Project = {
-        projectId: this.projectId,
+    var Result = {
+        studentID: this.studentID,
+        name: this.name,
         projectName: this.projectName,
-        projectRule: this.projectRule,
-        time: time,
-        projectSort: this.projectSort,
-        scoreBest: this.scoreBest
+        gameClass: this.gameClass,
+        group: this.group,
+        fendao: this.fendao,
+        projectResult: this.projectResult
     }
 
     //打开数据库
@@ -38,14 +41,14 @@ Project.prototype.save = function(callback){
         if(err){
             return callback(err);
         }
-        //读取Project集合
-        db.collection('Project',function(err,collection){
+        //读取Result集合
+        db.collection('Result',function(err,collection){
             if(err){
                 mongodb.close();
                 return callback(err);
             }
             //将文档插入Project集合
-            collection.insert(Project,{
+            collection.insert(Result,{
                 safe: true
             },function(err){
                 mongodb.close();
@@ -58,21 +61,21 @@ Project.prototype.save = function(callback){
     });
 };
 
-//读取项目及相关信息
-Project.get = function (projectId,callback) {
+//读取成绩及相关信息
+Result.get = function (studentID,callback) {
     mongodb.open(function(err,db){
         if(err){
             return callback(err);
         }
-        //读取Project集合
-        db.collection('Project',function(err,collection){
+        //读取Result集合
+        db.collection('Result',function(err,collection){
             if(err){
                 mongodb.close();
                 return callback(err);
             }
             var query = {};
-            if(projectId){
-                query.projectId = projectId;
+            if(studentID){
+                query.studentID = studentID;
             }
             //根据query对象查询文章
             collection.find(query).sort().toArray(function(err,docs){
@@ -86,4 +89,67 @@ Project.get = function (projectId,callback) {
     });
 };
 
-module.exports = Project;
+//修改项目
+Result.update = function(studentID,name, projectName,gameClass,group,fendao,projectResult,callback) {
+    //打开数据库
+    mongodb.open(function (err, db) {
+        if (err) {
+            return callback(err);
+        }
+        //读取 Result 集合
+        db.collection('Result', function (err, collection) {
+            if (err) {
+                mongodb.close();
+                return callback(err);
+            }
+            //更新项目内容
+            collection.update({
+                "studentID": studentID,
+            }, {
+                $set: {
+                    "studentID": studentID,
+                    "name": name,
+                    "projectName": projectName,
+                    "gameClass": gameClass,
+                    "group": group,
+                    "fendao": fendao,
+                    "projectResult": projectResult
+                }
+            }, function (err) {
+                mongodb.close();
+                if (err) {
+                    return callback(err);
+                }
+                callback(null);
+            });
+        });
+    });
+};
+
+//删除项目
+Result.remove = function(studentID, callback) {
+    //打开数据库
+    mongodb.open(function (err, db) {
+        if (err) {
+            return callback(err);
+        }
+        //读取 Result 集合
+        db.collection('Result', function (err, collection) {
+            if (err) {
+                mongodb.close();
+                return callback(err);
+            }
+            //根据项目ID查找并删除项目
+            collection.remove({
+                "studentID": studentID
+            }, function (err) {
+                mongodb.close();
+                if (err) {
+                    return callback(err);
+                }
+                callback(null);
+            });
+        });
+    });
+};
+module.exports = Result;

@@ -1,0 +1,173 @@
+<%- include pages/header %>
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"><%= title%></h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        团队得分情况
+                    </div>
+                    <div class="panel-body">
+                        <div class="dataTable_wrapper">
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                <tr>
+                                    <th>系院</th>
+                                    <th>金牌</th>
+                                    <th>银牌</th>
+                                    <th>铜牌</th>
+                                    <th>奖牌数</th>
+                                    <th>团体总分数</th>
+                                    <td>操作</td>
+                                    
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <% medalses.forEach(function (medals, index) { %>
+                                <tr >
+                                    <form id="_teamPointForm<%= index%>" method="post" action="/teamPoint_remove">
+                                        <input type="hidden" name="projectId" value="<%=medals.faculty %>" />
+                                    </form>
+                                    <td><%= medals.faculty %></td>
+                                    <td><%= medals.goldMedal %></td>
+                                    <td><%= medals.silverMedal %></td>
+                                    <td><%= medals.bronzeMedal %></td>
+                                    <td><%= medals.medalsNum %></td>
+                                    <td><%= medals.score %></td>
+                                    <td>
+                                        <a  href="" data-toggle="modal" data-target="#teamPoint_updateModal<%= index%>">修改</a>
+                                        &nbsp;|&nbsp;
+                                        <a href="" onclick="document.getElementById('_teamPointForm<%= index%>').submit(); return false ">删除</a>
+                                    </td>
+
+                                    <!-- 修改模态框 -->
+                                    <div class="modal fade" id="teamPoint_updateModal<%= index%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog" role="document">
+                                            <form class="form-horizontal" role="form" method="post" action="/teamPoint_update">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title" id="myModalLabel">修改团队奖牌数</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+
+                                                        <div style="margin-bottom: 25px" class="input-group">
+                                                            <input type="hidden" class="form-control" name="faculty" value="<%= medals.faculty%>" placeholder="请输入系别">
+                                                        </div>
+
+                                                        <div style="margin-bottom: 25px" class="input-group">
+                                                            <span class="input-group-addon">金牌数</span>
+                                                            <input type="text" class="form-control" name="goldMedal" value="<%= medals.goldMedal%>" placeholder="请输入金牌数">
+                                                        </div>
+
+                                                        <div style="margin-bottom: 25px" class="input-group">
+                                                            <span class="input-group-addon">银牌数</span>
+                                                            <input type="text" class="form-control" name="silverMedal" value="<%= medals.silverMedal%>" placeholder="请输入银牌数">
+                                                        </div>
+
+                                                        <div style="margin-bottom: 25px" class="input-group">
+                                                            <span class="input-group-addon">铜牌数</span>
+                                                            <input type="text" class="form-control" name="bronzeMedal" value="<%= medals.bronzeMedal%>" placeholder="请输入铜牌数">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                                        <button type="submit" class="btn btn-primary">确认修改</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </tr>
+                                <% }) %>
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+
+
+                            <!-- 反馈-->
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#teamPoint_insertModal">添加团队得分</button>
+                                </div>
+                                <div class="col-lg-2">
+                                    <% if(error) {%>
+                                    <span><%= error%></span>
+                                    <% } if (success) {%>
+                                    <span><%= success %> </span>
+                                    <%} %>
+                                </div>
+                            </div>
+                            <!-- 添加模态框 -->
+                            <div class="modal fade" id="teamPoint_insertModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <form class="form-horizontal" role="form" method="post" action="/teamPoint_insert">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" >添加团队奖牌数</h4>
+                                            </div>
+                                            <div class="modal-body">
+
+
+                                                <div style="margin-bottom: 25px" class="input-group">
+                                                    <select class="form-control" name="faculty">
+                                                        <option selected value=""> 请选择系别</option>
+                                                        <% faculty.forEach(function(facultyOne,index){%>
+                                                        <option><%= facultyOne%></option>
+                                                        <% })%>
+                                                    </select>
+                                                </div>
+
+                                                <div style="margin-bottom: 25px" class="input-group">
+                                                    <span class="input-group-addon">金牌数</span>
+                                                    <input type="text" class="form-control" name="goldMedal"  placeholder="请输入金牌数">
+                                                </div>
+
+                                                <div style="margin-bottom: 25px" class="input-group">
+                                                    <span class="input-group-addon">银牌数</span>
+                                                    <input type="text" class="form-control" name="silverMedal" placeholder="请输入银牌数">
+                                                </div>
+
+                                                <div style="margin-bottom: 25px" class="input-group">
+                                                    <span class="input-group-addon">铜牌数</span>
+                                                    <input type="text" class="form-control" name="bronzeMedal" placeholder="请输入铜牌数">
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                                <button type="submit" class="btn btn-primary">确认添加</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.table-responsive -->
+
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+<%- include pages/footer %>

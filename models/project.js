@@ -6,12 +6,13 @@ function Project(projectId,projectName,projectRule,projectSort,scoreBest){
     this.projectId = projectId;
     this.projectName = projectName;
     this.projectRule = projectRule;
-    this.projectSort = projectSort;
+    this.projectSort = projectSort; //个人或团体
     this.scoreBest = scoreBest;
 }
 
 //存储项目表及其相关信息
 Project.prototype.save = function(callback){
+
     var date = new Date();
     //存储各种时间格式，方便以后拓展
     var time = {
@@ -84,20 +85,20 @@ Project.get = function (projectId,callback) {
     });
 };
 
-//更新一篇文章及其相关信息
+//修改项目
 Project.update = function(projectId,projectName, projectRule, projectSort,scoreBest,callback) {
     //打开数据库
     mongodb.open(function (err, db) {
         if (err) {
             return callback(err);
         }
-        //读取 posts 集合
+        //读取 Project 集合
         db.collection('Project', function (err, collection) {
             if (err) {
                 mongodb.close();
                 return callback(err);
             }
-            //更新文章内容
+            //更新项目内容
             collection.update({
                 "projectId": projectId,
             }, {
@@ -119,20 +120,20 @@ Project.update = function(projectId,projectName, projectRule, projectSort,scoreB
     });
 };
 
-//删除一篇文章
+//删除项目
 Project.remove = function(projectId, callback) {
     //打开数据库
     mongodb.open(function (err, db) {
         if (err) {
             return callback(err);
         }
-        //读取 posts 集合
+        //读取 Project 集合
         db.collection('Project', function (err, collection) {
             if (err) {
                 mongodb.close();
                 return callback(err);
             }
-            //根据用户名、日期和标题查找并删除一篇文章
+            //根据项目ID查找并删除项目
             collection.remove({
                 "projectId": projectId
             }, function (err) {

@@ -73,3 +73,12 @@
     display: block;
     margin-top: 10px;
 }
+
+tr{
+    text-align: center;
+    vertical-align: middle;
+}
+
+a:hover {
+    text-decoration:none;
+}

@@ -1,0 +1,364 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+	<meta charset="UTF-8">
+<title>田径运动会管理系统</title>
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/blue.css" rel="stylesheet" type="text/css" media="all" />
+<!----font-Awesome----->
+   	<link rel="stylesheet" href="fonts/css/font-awesome.min.css">
+<!----font-Awesome----->
+<!-- start plugins -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!--start slider -->
+    <link rel="stylesheet" href="css/fwslider.css" media="all">
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/css3-mediaqueries.js"></script>
+    <script src="js/fwslider.js"></script>
+<!--end slider -->
+<!-- must have -->
+<link href="css/allinone_carousel.css" rel="stylesheet" type="text/css">
+<script src="js/jq
+uery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
+<script src="js/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+<script src="js/allinone_carousel.js" type="text/javascript"></script>
+<!--[if IE]><script src="js/excanvas.compiled.js" type="text/javascript"></script>
+<![endif]-->
+<!-- must have -->
+	<script>
+		jQuery(function() {
+
+			jQuery('#allinone_carousel_charming').allinone_carousel({
+				skin: 'charming',
+				width: 990,
+				height: 454,
+				responsive:true,
+				autoPlay: 3,
+				resizeImages:true,
+				autoHideBottomNav:false,
+				showElementTitle:false,
+				verticalAdjustment:50,
+				showPreviewThumbs:false,
+				//easing:'easeOutBounce',
+				numberOfVisibleItems:5,
+				nextPrevMarginTop:23,
+				playMovieMarginTop:0,
+				bottomNavMarginBottom:-10
+			});		
+		});
+	</script>
+<!-- Owl Carousel Assets -->
+<link href="css/owl.carousel.css" rel="stylesheet">
+<script src="js/owl.carousel.js"></script>
+		<script>
+			$(document).ready(function() {
+
+				$("#owl-demo").owlCarousel({
+					items : 4,
+					lazyLoad : true,
+					autoPlay : true,
+					navigation : true,
+					navigationText : ["", ""],
+					rewindNav : false,
+					scrollPerPage : false,
+					pagination : false,
+					paginationNumbers : false,
+				});
+
+			});
+		</script>
+		<!-- //Owl Carousel Assets -->
+<!-- start circle -->
+<script>
+(function($){
+	$.fn.percentPie = function(options){
+
+		var settings = $.extend({
+			width: 100,
+			trackColor: "EEEEEE",
+			barColor: "E2534B",
+			barWeight: 30,
+			startPercent: 0,
+			endPercent: 1,
+			fps: 60
+		}, options);
+
+		this.css({
+			width: settings.width,
+			height: settings.width
+		});
+
+		var	that = this,
+			hoverPolice = false,
+			canvasWidth = settings.width,
+			canvasHeight = canvasWidth,
+			id = $('canvas').length,
+			canvasElement = $('<canvas id="'+ id +'" width="' + canvasWidth + '" height="' + canvasHeight + '"></canvas>'),
+			canvas = canvasElement.get(0).getContext("2d"),
+			centerX = canvasWidth/2,
+			centerY = canvasHeight/2,
+			radius = settings.width/2 - settings.barWeight/2;
+			counterClockwise = false,
+			fps = 1000 / settings.fps,
+			update = .01;
+			this.angle = settings.startPercent;
+
+		this.drawArc = function(startAngle, percentFilled, color){
+			var drawingArc = true;
+			canvas.beginPath();
+			canvas.arc(centerX, centerY, radius, (Math.PI/180)*(startAngle * 360 - 90), (Math.PI/180)*(percentFilled * 360 - 90), counterClockwise);
+			canvas.strokeStyle = color;
+			canvas.lineWidth = settings.barWeight;
+			canvas.stroke();
+			drawingArc = false;
+		}
+
+		this.fillChart = function(stop){
+			var loop = setInterval(function(){
+				hoverPolice = true;
+				canvas.clearRect(0, 0, canvasWidth, canvasHeight);
+
+				that.drawArc(0, 360, settings.trackColor);
+				that.angle += update;
+				that.drawArc(settings.startPercent, that.angle, settings.barColor);
+
+				if(that.angle > stop){
+					clearInterval(loop);
+					hoverPolice = false;
+				}
+			}, fps);
+		}
+
+		this.mouseover(function(){
+			if(hoverPolice == false){
+				that.angle = settings.startPercent;
+				that.fillChart(settings.endPercent);
+			}
+		});
+
+		this.fillChart(settings.endPercent);
+		this.append(canvasElement);
+		return this;
+	}
+}(jQuery));
+
+$(document).ready(function() {
+
+	$('.google').percentPie({
+		width: 100,
+		trackColor: "E2534B",
+		barColor: "76C7C0",
+		barWeight: 20,
+		endPercent: .9,
+		fps: 60
+	});
+  
+  $('.moz').percentPie({
+		width: 100,
+		trackColor: "E2534B",
+		barColor: "76C7C0",
+		barWeight: 20,
+		endPercent: .75,
+		fps: 60
+	});
+  
+  $('.safari').percentPie({
+		width: 100,
+		trackColor: "E2534B",
+		barColor: "#76C7C0",
+		barWeight: 20,
+		endPercent: .5,
+		fps: 60
+	});
+    
+});
+</script>
+	<link rel="stylesheet" href="css/app.css" >
+</head>
+<body>
+<div class="header_bg head">
+<div class="container">
+	<div class="header">
+		<div class="h_menu">
+		<a id="touch-menu" class="mobile-menu" href="#">Menu</a>
+		<nav>
+		<ul class="menu list-unstyled">
+			<li class="activate"><a href="index.html">首页</a></li>
+			<li><a href="team1.html">项目介绍</a>
+				<!--ul class="sub-menu list-unstyled">
+					<li><a href="team1.html">田赛</a></li>
+					<li><a href="team22.html">径赛</a></li>
+				</ul-->
+			</li>
+			<li><a href="feature.html">通知公告</a></li>
+			<li><a href="baoming.html">报名</a></li>
+			<li><a href="about.html">登陆</a></li>
+			<li><a href="service.html">注册</a></li>
+		</ul>
+		</nav>
+		<script src="js/menu.js" type="text/javascript"></script>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+</div>
+    <div id="fwslider"><!-- start slider -->
+        <div class="slider_container">
+            <div class="slide"> 
+                <!-- Slide image -->
+                    <img src="images/slider1.jpg">
+                <!-- /Slide image -->
+                <!-- Texts container -->
+                <div class="slide_content ">
+                    <div >
+                        <!-- Text title -->
+
+                        <!-- /Text title -->
+                        <!-- Text description -->
+						<br><br><br><br><br><br><br><br><br><br>
+                        <p class="description">
+							我可以接受失败，但我绝不接受放弃。
+							<br>——迈克尔－乔丹
+						</p>
+                        <!-- /Text description -->
+                    </div>
+                </div>
+                 <!-- /Texts container -->
+            </div>
+            <!-- /Duplicate to create more slides -->
+            <div class="slide">
+                <img src="images/slider2.jpg">
+                <div class="slide_content">
+                    <div >
+						<br><br><br><br><br><br><br><br><br><br>
+                        <p class="description">
+							体育竞赛之最绝妙处乃由于它只在手做，不在口说。
+							</br>——赫尔巴特</p>
+                    </div>
+                </div>
+            </div>
+            <!--/slide -->
+        </div>
+        <div class="timers"></div>
+        <div class="slidePrev"><span></span></div>
+        <div class="slideNext"><span></span></div>
+    </div><!--/slider -->
+<div class="main_bg"><!-- start main -->
+<div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="��վģ��">��վģ��</a></div>
+
+<div class="main1_bg"><!-- start main1 -->
+<div class="container">
+	<div class="main slider_text texxt-center">
+		<h4>赛场精彩瞬间</h4>
+		<p>Please don't struggle in should have age choose at ease！</p>
+</div>
+</div>
+<!-- start banner -->
+<div id="bannerBg">
+<div id="containingDiv">
+            <div id="allinone_carousel_charming">
+            	<div class="myloader"></div>
+                <!-- CONTENT -->
+                <ul class="allinone_carousel_list">
+               		<li><img src="images/slider_pic1.jpg" alt="" class="img-responsive"/></li>
+                    <li><img src="images/slider_pic2.jpg" alt="" class="img-responsive"/></li>
+                    <li><img src="images/slider_pic3.jpg" alt="" class="img-responsive"/></li>
+                    <li><img src="images/slider_pic4.jpg" alt="" class="img-responsive"/></li>
+                    <li><img src="images/slider_pic5.jpg" alt="" class="img-responsive"/></li>
+                    <li><img src="images/slider_pic3.jpg" alt="" class="img-responsive"/></li>
+                    <li><img src="images/slider_pic4.jpg" alt="" class="img-responsive"/></li>
+                    <li><img src="images/slider_pic5.jpg" alt="" class="img-responsive"/></li>
+                      
+                </ul>    
+          </div>
+</div>
+</div>
+ <!-- end banner -->
+</div>
+<div class="main_btm"><!-- start main_btm -->
+<div class="container">
+	<div class="main span_of_3">
+		<div class="col-md-3 span1_of_3">
+			<h4>今日赛况</h4>
+			<ul >
+				<h5>
+				<li><a href="#">11:34 经管小段在跳高时不幸摔伤，被迫离场</a></li>
+				<li><a href="#">10:55 一位非洲兄弟夺得男子400米冠军 领先第二名50米</a></li>
+				<li><a href="#">10:10 在5000米的比赛中物流1401班小贾和1322班小武全程领跑，势均力敌</a></li>
+				<li><a href="#">9:04 软件1324班小李以12s的成绩获得女子100米第五组冠军</a></li>
+				<li><a href="#">8:40 今日的开场运动员们士气很高</a></li>
+				</h5>
+			</ul>
+		</div>	
+		<div class="col-md-6 span1_of_3">
+			<h4>不运动的坏处</h4>
+			<P><h5>世界卫生组织估计,全球因缺乏运动而引致的死亡人数,每年超过二百万. 注意：不运动，会使身体的免疫能力下降，某些疾病和病毒不能得到有效免疫而诱发猝死。还有一个重要的情况，如果小孩不进行足够多的体育锻炼的话,那他们的大脑发育也不会很好，就影响到智力稍微不明显的低下。</h5></P>
+				<!-- start circle -->
+				<ul class="list-unstyled circle_list">
+					<li>
+						<div class="safari chart">
+						  <div class="tag">33%</div>
+						</div>			
+						<h4 class="style">消弱感冒</h4>
+					</li>
+					<li>
+						<div class="moz chart">
+						  <div class="tag">20%</div>
+						</div>			
+						<h4 class="style">提高学习效率</h4>
+					</li>
+					<li>
+						<div class="google chart">
+						  <div class="tag">40%</div>
+						</div>	
+						<h4 class="style">增强自信</h4>
+					</li>
+				</ul>
+				<!-- end circle -->
+		</div>	
+		<div class="col-md-3 span1_of_3">
+			<h4>运动小常识</h4>
+			<ol >
+				<h5>
+					<li><a href="#">剧烈运动时和运动后不可大量饮水</a></li>
+					<li><a href="#">进餐后不宜运动</a></li>
+					<li><a href="#">在不适当的地点运动会带来伤害</a></li>
+					<li><a href="#">不要在情绪不好的时候运动</a></li>
+					<li><a href="#">选择最佳运动量</a></li>
+					<li><a href="#">运动后营养的补充与恢复</a></li>
+					<li><a href="#">运动后不能立即洗澡</a></li>
+					<li><a href="#"> 不“省略”整理活动</a></li>
+					<li><a href="#">健身运动后不宜立即蹲坐休息</a></li>
+					<li><a href="#">不在大汗淋漓时洗冷热水浴(或游泳)</a></li>
+				</h5>
+			</ol>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	</div>
+
+
+<div class="footer1_bg tail"><!-- start footer1 -->
+<div class="container">
+	<div class="footer1">
+		<div class="copy pull-left">
+			<p class="link"><h4 class="h">@太原理工大学软件1324班课程设计</h4></p>
+		</div>
+		<div class="soc_icons pull-right">
+			<ul class="list-unstyled text-center">
+				<li><a href="#"><i class="fa fa-twitter">返回顶部</i></a></li>
+			</ul>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+</div>
+
+</body>
+</html>

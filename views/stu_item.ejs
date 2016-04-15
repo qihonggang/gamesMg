@@ -1,0 +1,171 @@
+<%- include pages/stu_header %>
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"><%= title%></h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        全部项目
+                    </div>
+                    <div class="panel-body">
+                        <div class="dataTable_wrapper">
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                <tr>
+                                    <th>项目ID</th>
+                                    <th>项目名</th>
+                                    <th>项目规则</th>
+                                    <th>类别</th>
+                                    <th>历史最好成绩</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <% projects.forEach(function (project, index) { %>
+                                <tr>
+                                    <td><%=project.projectId %></td>
+                                    <td><%= project.projectName %></td>
+                                    <td><%= project.projectRule %></td>
+                                    <td><%= project.projectSort %></td>
+                                    <td><%= project.scoreBest %></td>
+                                </tr>
+                                <% }) %>
+
+                                <tr>
+                                    <td>010100</td>
+                                    <td>男子100米</td>
+                                    <td>预赛取前八决赛取优</td>
+                                    <td class="center">男</td>
+                                    <td class="center">9''99</td>
+                                </tr>
+                                <tr >
+                                    <td>020100</td>
+                                    <td>女子100米</td>
+                                    <td>预赛取前八决赛取优</td>
+                                    <td class="center">女</td>
+                                    <td class="center">10''99</td>
+                                </tr>
+                                <tr >
+                                    <td>010200</td>
+                                    <td>男子200米</td>
+                                    <td>预赛取前八决赛取优</td>
+                                    <td class="center">男</td>
+                                    <td class="center">19''99</td>
+                                </tr>
+                                <tr >
+                                    <td>020200</td>
+                                    <td>女子100米</td>
+                                    <td>预赛取前八决赛取优</td>
+                                    <td class="center">女</td>
+                                    <td class="center">29''99</td>
+                                </tr>
+                                <tr >
+                                    <td>010400</td>
+                                    <td>男子400米</td>
+                                    <td>预赛取前八决赛取优</td>
+                                    <td class="center">男</td>
+                                    <td class="center">49'’99'</td>
+                                </tr>
+                                <tr >
+                                    <td>020400</td>
+                                    <td>女子400米</td>
+                                    <td>预赛取前八决赛取优</td>
+                                    <td class="center">女</td>
+                                    <td class="center">1'10'99</td>
+                                </tr>
+                                <tr >
+                                    <td>010800</td>
+                                    <td>男子800米</td>
+                                    <td>预赛取前八决赛取优</td>
+                                    <td class="center">男</td>
+                                    <td class="center">1'49''99</td>
+                                </tr>
+                                <tr >
+                                    <td>020800</td>
+                                    <td>女子800米</td>
+                                    <td>预赛取前八决赛取优</td>
+                                    <td class="center">女</td>
+                                    <td class="center">2'09''99</td>
+                                </tr>
+                                <tr >
+                                    <td>011500</td>
+                                    <td>男子1500米</td>
+                                    <td>预决赛取优</td>
+                                    <td class="center">男</td>
+                                    <td class="center">3'59'99</td>
+                                </tr>
+                                <tr >
+                                    <td>021500</td>
+                                    <td>女子1500米</td>
+                                    <td>预决赛取优</td>
+                                    <td class="center">女</td>
+                                    <td class="center">4'59'99</td>
+                                </tr>
+                                <tr >
+                                    <td>010001</td>
+                                    <td>男子跳远</td>
+                                    <td>预决赛取优</td>
+                                    <td class="center">男</td>
+                                    <td class="center">6.10</td>
+                                </tr>
+                                <tr >
+                                    <td>020001</td>
+                                    <td>女子跳远</td>
+                                    <td>预决赛取优</td>
+                                    <td class="center">女</td>
+                                    <td class="center">5.10</td>
+
+                                <tr >
+                                    <td>010003</td>
+                                    <td>男子铅球</td>
+                                    <td>预决赛取优</td>
+                                    <td class="center">男</td>
+                                    <td class="center">6.00</td>
+                                </tr>
+                                <tr >
+                                    <td>020003</td>
+                                    <td>女子铅球</td>
+                                    <td>预决赛取优</td>
+                                    <td class="center">女</td>
+                                    <td class="center">4.50</td>
+                                </tr>
+                                <tr >
+                                    <td>014100</td>
+                                    <td>男子4×100米</td>
+                                    <td>预决赛取优</td>
+                                    <td class="center">男</td>
+                                    <td class="center">39''99</td>
+                                </tr>
+                                <tr >
+                                    <td>024100</td>
+                                    <td>女子4×100米</td>
+                                    <td>预决赛取优</td>
+                                    <td class="center">女</td>
+                                    <td class="center">55''99</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+<%- include pages/stu_footer%>

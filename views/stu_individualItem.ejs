@@ -1,0 +1,63 @@
+<%- include pages/stu_header %>
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">项目成绩</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        个人项目
+                    </div>
+                    <div class="panel-body">
+                        <div class="dataTable_wrapper">
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                <tr>
+                                    <th>项目名</th>
+                                    <th>预/决赛</th>
+                                    <th>学生姓名</th>
+                                    <th>学号</th>
+                                    <th>组次</th>
+                                    <th>道次</th>
+                                    <th>成绩</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <% individualItems.forEach(function (individualItem, index) { %>
+                                <tr>
+
+                                    <td><%=individualItem.projectName %></td>
+                                    <td><%= individualItem.gameClass %></td>
+                                    <td><%= individualItem.name %></td>
+                                    <td><%= individualItem.studentID %></td>
+                                    <td><%= individualItem.group %></td>
+                                    <td><%= individualItem.fendao %></td>
+                                    <td><%= individualItem.projectResult %></td>
+                                </tr>
+                                <% }) %>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+<%- include pages/stu_footer %>
